@@ -1,0 +1,19 @@
+{
+  "name": "donut-marker",
+  "version": "1.0.0",
+  "description": "Set map marker shape as donut which is same lat, lot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/foodsns/Donut-Marker.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/foodsns/Donut-Marker/issues"
+  },
+  "homepage": "https://github.com/foodsns/Donut-Marker#readme"
+}
