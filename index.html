@@ -32,10 +32,11 @@
             const ICON_SIZE = 32;
             const RADIUS = 50;
             const OFFSET_POS = 16;
+            const ITEM_CNT = 30
             let currentRadius = 0
             var map = new kakao.maps.Map(container, options);
 
-            for (let i = 0; i < 30;) {
+            for (let i = 0; i < ITEM_CNT;) {
                 const dummyBlock = {
                     x: Math.cos(45 * Math.PI / 180) * currentRadius,
                     y: Math.sin(45 * Math.PI / 180) * currentRadius
@@ -65,7 +66,7 @@
 
                 let degreeCnt = 0
 
-                for(let t = i; t < 30 && t - i < maxMarkerCnt; t ++) {
+                for(let t = i; t < ITEM_CNT && t - i < maxMarkerCnt; t ++) {
                     const theta = degreeCnt * Math.PI / 180
                     const x = currentRadius * Math.cos(theta)
                     const y = currentRadius * Math.sin(theta)
