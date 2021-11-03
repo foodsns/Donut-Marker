@@ -29,9 +29,9 @@
                     level: 3
                 };
             
-            const ICON_SIZE = 64;
-            const RADIUS = 70;
-            const OFFSET_POS = 32;
+            const ICON_SIZE = 32;
+            const RADIUS = 50;
+            const OFFSET_POS = 16;
             let currentRadius = 0
             var map = new kakao.maps.Map(container, options);
 
@@ -40,6 +40,7 @@
                     x: Math.cos(45 * Math.PI / 180) * currentRadius,
                     y: Math.sin(45 * Math.PI / 180) * currentRadius
                 }
+                console.log(dummyBlock)
                 const leftTopDummyBlock = {
                     x: dummyBlock.x - ICON_SIZE / 2,
                     y: dummyBlock.y + ICON_SIZE / 2,
@@ -52,23 +53,25 @@
                 }
                 const leftTopRadius = PythagoreanTheorem(leftTopDummyBlock.x, leftTopDummyBlock.y)
                 const rightBottomRadius = PythagoreanTheorem(rightBottomDummyBlock.x, rightBottomDummyBlock.y)
+                console.log(leftTopRadius, rightBottomRadius)
 
                 leftTopDummyBlock.theta = Math.cos(leftTopDummyBlock.x / leftTopRadius);
                 rightBottomDummyBlock.theta = Math.cos(rightBottomDummyBlock.x / rightBottomRadius);
+                console.log(leftTopDummyBlock, rightBottomDummyBlock)
 
-                const degree = 180 / Math.PI * (leftTopDummyBlock.theta - rightBottomDummyBlock.theta);
-                const maxMarkerCnt = Math.floor(360 / (degree === 0 ? 360 : degree))
+                const degree = 180 / Math.PI * (leftTopDummyBlock.theta - rightBottomDummyBlock.theta) * 2;
+                const maxMarkerCnt = Math.round(360 / (degree === 0 ? 360 : degree))
                 console.log(`#${i}, radius: ${currentRadius} / degree: ${degree}, max: ${maxMarkerCnt}`)
 
                 let degreeCnt = 0
 
-                new Array(maxMarkerCnt).fill(undefined).forEach(() => {
+                for(let t = i; t < 30 && t - i < maxMarkerCnt; t ++) {
                     const theta = degreeCnt * Math.PI / 180
                     const x = currentRadius * Math.cos(theta)
                     const y = currentRadius * Math.sin(theta)
                     createImgMarker(x, y)
                     degreeCnt += degree
-                })
+                }
 
                 i += maxMarkerCnt
                 currentRadius += RADIUS
