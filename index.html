@@ -30,26 +30,74 @@
                 };
             
             const ICON_SIZE = 64;
+            const RADIUS = 70;
             const OFFSET_POS = 32;
+            let currentRadius = 0
             var map = new kakao.maps.Map(container, options);
-            var icon = new kakao.maps.MarkerImage(
-                'https://avatars.githubusercontent.com/u/90189814?s=200&v=4',
-                new kakao.maps.Size(ICON_SIZE, ICON_SIZE),
-                {
-                    offset: new kakao.maps.Point(OFFSET_POS + 0, OFFSET_POS + 0),
-                    alt: "마커 이미지 예제",
-                }
-            );
 
-            const marker = new kakao.maps.Marker({
-                position: new kakao.maps.LatLng(33.450701, 126.570667),
-                image: icon
-            });
-            marker.setMap(map);
-            kakao.maps.event.addListener(marker, 'click', function() {
-                // 마커 위에 인포윈도우를 표시합니다
-                console.log('clicked')
-            });
+            for (let i = 0; i < 30;) {
+                const dummyBlock = {
+                    x: Math.cos(45 * Math.PI / 180) * currentRadius,
+                    y: Math.sin(45 * Math.PI / 180) * currentRadius
+                }
+                const leftTopDummyBlock = {
+                    x: dummyBlock.x - ICON_SIZE / 2,
+                    y: dummyBlock.y + ICON_SIZE / 2,
+                    theta: 0
+                }
+                const rightBottomDummyBlock = {
+                    x: dummyBlock.x + ICON_SIZE / 2,
+                    y: dummyBlock.y - ICON_SIZE / 2,
+                    theta: 0
+                }
+                const leftTopRadius = PythagoreanTheorem(leftTopDummyBlock.x, leftTopDummyBlock.y)
+                const rightBottomRadius = PythagoreanTheorem(rightBottomDummyBlock.x, rightBottomDummyBlock.y)
+
+                leftTopDummyBlock.theta = Math.cos(leftTopDummyBlock.x / leftTopRadius);
+                rightBottomDummyBlock.theta = Math.cos(rightBottomDummyBlock.x / rightBottomRadius);
+
+                const degree = 180 / Math.PI * (leftTopDummyBlock.theta - rightBottomDummyBlock.theta);
+                const maxMarkerCnt = Math.floor(360 / (degree === 0 ? 360 : degree))
+                console.log(`#${i}, radius: ${currentRadius} / degree: ${degree}, max: ${maxMarkerCnt}`)
+
+                let degreeCnt = 0
+
+                new Array(maxMarkerCnt).fill(undefined).forEach(() => {
+                    const theta = degreeCnt * Math.PI / 180
+                    const x = currentRadius * Math.cos(theta)
+                    const y = currentRadius * Math.sin(theta)
+                    createImgMarker(x, y)
+                    degreeCnt += degree
+                })
+
+                i += maxMarkerCnt
+                currentRadius += RADIUS
+            }
+
+            function PythagoreanTheorem(x, y) {
+                return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2))
+            }
+
+            function createImgMarker(x, y) {
+                var icon = new kakao.maps.MarkerImage(
+                    'https://avatars.githubusercontent.com/u/90189814?s=200&v=4',
+                    new kakao.maps.Size(ICON_SIZE, ICON_SIZE),
+                    {
+                        offset: new kakao.maps.Point(OFFSET_POS + x, OFFSET_POS + y),
+                        alt: "마커 이미지 예제",
+                    }
+                );
+
+                const marker = new kakao.maps.Marker({
+                    position: new kakao.maps.LatLng(33.450701, 126.570667),
+                    image: icon
+                });
+                marker.setMap(map);
+                kakao.maps.event.addListener(marker, 'click', function() {
+                    // 마커 위에 인포윈도우를 표시합니다
+                    console.log('clicked')
+                });
+            }
         }
     </script>
 </body>
