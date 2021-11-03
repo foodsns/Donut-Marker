@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+        div#map {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4430c55fe642a239ee97ac7a3161ae89&libraries=services"></script>
+    <script>
+        window.onload = function () {
+            var container = document.getElementById('map'),
+                options = {
+                    center: new kakao.maps.LatLng(33.450701, 126.570667),
+                    level: 3
+                };
+            
+            const ICON_SIZE = 64;
+            const OFFSET_POS = 32;
+            var map = new kakao.maps.Map(container, options);
+            var icon = new kakao.maps.MarkerImage(
+                'https://avatars.githubusercontent.com/u/90189814?s=200&v=4',
+                new kakao.maps.Size(ICON_SIZE, ICON_SIZE),
+                {
+                    offset: new kakao.maps.Point(OFFSET_POS + 0, OFFSET_POS + 0),
+                    alt: "마커 이미지 예제",
+                }
+            );
+
+            const marker = new kakao.maps.Marker({
+                position: new kakao.maps.LatLng(33.450701, 126.570667),
+                image: icon
+            });
+            marker.setMap(map);
+            kakao.maps.event.addListener(marker, 'click', function() {
+                // 마커 위에 인포윈도우를 표시합니다
+                console.log('clicked')
+            });
+        }
+    </script>
+</body>
+</html>
