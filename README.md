@@ -1,6 +1,7 @@
 # Donut-Marker
 Set map marker shape as donut which is same lat, lot
 
+[NPM](https://www.npmjs.com/package/donuuut) package published.
 
 ## Preview
 
