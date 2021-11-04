@@ -1,6 +1,6 @@
 {
-  "name": "donut-marker",
-  "version": "1.0.0",
+  "name": "donuuut",
+  "version": "0.1.0",
   "description": "Set map marker shape as donut which is same lat, lot",
   "main": "index.js",
   "scripts": {
@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/foodsns/Donut-Marker/issues"
   },
-  "homepage": "https://github.com/foodsns/Donut-Marker#readme"
+  "homepage": "https://github.com/foodsns/Donut-Marker#readme",
+  "type": "module"
 }
