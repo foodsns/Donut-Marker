@@ -102,7 +102,8 @@ function dataCast(test) {
         blockSize: test.blockSize.val,
         radius: test.radius.val,
         offset: test.offset.val,
-        itemSize: test.itemSize.val
+        itemSize: test.itemSize.val,
+        isDebugging: test.isDebugging
     }
 }
 
@@ -163,7 +164,10 @@ test('block size > 0 0 < radius <= block size offset == 0 item len == 1', () => 
 });
 
 test('block size > 0 block size < radius offset == 0 item len == 1', () => {
-    expect(makeDonuuut(dataCast(TESTCASES_LIST[14])).length).toBe(1);
+    const result = makeDonuuut(dataCast(TESTCASES_LIST[14]))
+    expect(result.length).toBe(TESTCASES_LIST[14].itemSize.val);
+    expect(result[0].x).toBe(TESTCASES_LIST[14].offset.val);
+    expect(result[0].y).toBe(TESTCASES_LIST[14].offset.val);
 });
 
 test('block size <= 0 radius <= 0 offset != 0 item len == 1', () => {
@@ -183,7 +187,10 @@ test('block size > 0 0 < radius <= block size offset != 0 item len == 1', () => 
 });
 
 test('block size > 0 block size < radius offset != 0 item len == 1', () => {
-    expect(makeDonuuut(dataCast(TESTCASES_LIST[19])).length).toBe(1);
+    const result = makeDonuuut(dataCast(TESTCASES_LIST[19]))
+    expect(result.length).toBe(TESTCASES_LIST[19].itemSize.val);
+    expect(result[0].x).toBe(TESTCASES_LIST[19].offset.val);
+    expect(result[0].y).toBe(TESTCASES_LIST[19].offset.val);
 });
 
 test('block size <= 0 radius <= 0 offset == 0 item len > 1', () => {
@@ -203,7 +210,13 @@ test('block size > 0 0 < radius <= block size offset == 0 item len > 1', () => {
 });
 
 test('block size > 0 block size < radius offset == 0 item len > 1', () => {
-    expect(makeDonuuut(dataCast(TESTCASES_LIST[24])).length).toBe(10);
+    // TESTCASES_LIST[24].isDebugging = true
+    const result = makeDonuuut(dataCast(TESTCASES_LIST[24]))
+    expect(result.length).toBe(TESTCASES_LIST[24].itemSize.val);
+    expect(result[0].x).toBe(TESTCASES_LIST[24].offset.val);
+    expect(result[0].y).toBe(TESTCASES_LIST[24].offset.val);
+    expect(result[2].x).toBe(38.54735723750887)
+    expect(result[2].y).toBe(31.84495642961178)
 });
 
 test('block size <= 0 radius <= 0 offset != 0 item len > 1', () => {
@@ -223,5 +236,11 @@ test('block size > 0 0 < radius <= block size offset != 0 item len > 1', () => {
 });
 
 test('block size > 0 block size < radius offset != 0 item len > 1', () => {
-    expect(makeDonuuut(dataCast(TESTCASES_LIST[29])).length).toBe(10);
+    expect(makeDonuuut(dataCast(TESTCASES_LIST[29])).length).toBe(TESTCASES_LIST[29].itemSize.val);
+    const result = makeDonuuut(dataCast(TESTCASES_LIST[29]))
+    expect(result.length).toBe(TESTCASES_LIST[29].itemSize.val);
+    expect(result[0].x).toBe(TESTCASES_LIST[29].offset.val);
+    expect(result[0].y).toBe(TESTCASES_LIST[29].offset.val);
+    expect(result[2].x).toBe(54.54735723750887)
+    expect(result[2].y).toBe(47.844956429611784)
 });

@@ -35,6 +35,8 @@ export function makeDonuuut ({
     let currentRadius = 0
     const halfBlockSize = blockSize / 2
     for (let i = 0; i < itemSize;) {
+        if (isDebugging)
+            console.log(`=============${i}=============`)
         const dummyBlock = {
             x: Math.cos(Degree2Radius(45)) * currentRadius,
             y: Math.sin(Degree2Radius(45)) * currentRadius
@@ -55,6 +57,11 @@ export function makeDonuuut ({
         leftTopDummyBlock.theta = Math.cos(leftTopDummyBlock.x / leftTopRadius);
         rightBottomDummyBlock.theta = Math.cos(rightBottomDummyBlock.x / rightBottomRadius);
 
+        if (isDebugging) {
+            console.log(`left theta: ${Radius2Degree(leftTopDummyBlock.theta)}, right theta: ${Radius2Degree(rightBottomDummyBlock.theta)}, degree: ${Radius2Degree(leftTopDummyBlock.theta - rightBottomDummyBlock.theta)}`)
+            console.log('dummyBlock', dummyBlock, 'left', leftTopDummyBlock, 'right', rightBottomDummyBlock)
+            console.log(`leftTopRadius: ${leftTopRadius}, rightBottomRadius: ${rightBottomRadius}`)
+        }
         const degree = Radius2Degree(leftTopDummyBlock.theta - rightBottomDummyBlock.theta) * 2;
         const maxMarkerCnt = Math.round(360 / (degree === 0 ? 360 : degree))
 
