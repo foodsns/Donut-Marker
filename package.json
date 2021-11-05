@@ -1,6 +1,6 @@
 {
   "name": "donuuut",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Set map marker shape as donut which is same lat, lot",
   "main": "index.js",
   "scripts": {
