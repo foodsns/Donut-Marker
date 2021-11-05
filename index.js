@@ -10,6 +10,13 @@ function Radius2Degree(radius) {
     return 180 / Math.PI * radius
 }
 
+function validateInput(blockSize, radius, offset, itemSize) {
+    if (blockSize <= 0 || 
+        radius <= blockSize)
+        return false
+    return true
+}
+
 export function makeDonuuut ({
     blockSize,
     radius,
@@ -19,6 +26,11 @@ export function makeDonuuut ({
 } = {}) {
     if (isDebugging)
         console.log(`blockSize: ${blockSize}, radius: ${radius}, offset: ${offset}, itemSize: ${itemSize}`)
+
+    if (!validateInput(blockSize, radius, offset, itemSize)) {
+        return []
+    }
+    
     const donuutArray = []
     let currentRadius = 0
     const halfBlockSize = blockSize / 2

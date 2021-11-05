@@ -190,13 +190,13 @@ test('block size <= 0 radius <= 0 offset == 0 item len > 1', () => {
     expect(makeDonuuut(dataCast(TESTCASES_LIST[20])).length).toBe(0);
 });
 
-// test('block size <= 0 block size < radius offset == 0 item len > 1', () => {
-//     expect(makeDonuuut(dataCast(TESTCASES_LIST[21])).length).toBe(0);
-// });
+test('block size <= 0 block size < radius offset == 0 item len > 1', () => {
+    expect(makeDonuuut(dataCast(TESTCASES_LIST[21])).length).toBe(0);
+});
 
-// test('block size > 0 radius <= 0 offset == 0 item len > 1', () => {
-//     expect(makeDonuuut(dataCast(TESTCASES_LIST[22])).length).toBe(0);
-// });
+test('block size > 0 radius <= 0 offset == 0 item len > 1', () => {
+    expect(makeDonuuut(dataCast(TESTCASES_LIST[22])).length).toBe(0);
+});
 
 test('block size > 0 0 < radius <= block size offset == 0 item len > 1', () => {
     expect(makeDonuuut(dataCast(TESTCASES_LIST[23])).length).toBe(0);
@@ -210,13 +210,13 @@ test('block size <= 0 radius <= 0 offset != 0 item len > 1', () => {
     expect(makeDonuuut(dataCast(TESTCASES_LIST[25])).length).toBe(0);
 });
 
-// test('block size <= 0 block size < radius offset != 0 item len > 1', () => {
-//     expect(makeDonuuut(dataCast(TESTCASES_LIST[26])).length).toBe(0);
-// });
+test('block size <= 0 block size < radius offset != 0 item len > 1', () => {
+    expect(makeDonuuut(dataCast(TESTCASES_LIST[26])).length).toBe(0);
+});
 
-// test('block size > 0 radius <= 0 offset != 0 item len > 1', () => {
-//     expect(makeDonuuut(dataCast(TESTCASES_LIST[27])).length).toBe(0);
-// });
+test('block size > 0 radius <= 0 offset != 0 item len > 1', () => {
+    expect(makeDonuuut(dataCast(TESTCASES_LIST[27])).length).toBe(0);
+});
 
 test('block size > 0 0 < radius <= block size offset != 0 item len > 1', () => {
     expect(makeDonuuut(dataCast(TESTCASES_LIST[28])).length).toBe(0);
