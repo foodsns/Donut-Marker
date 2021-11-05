@@ -14,8 +14,11 @@ export function makeDonuuut ({
     blockSize,
     radius,
     offset,
-    itemSize
+    itemSize,
+    isDebugging = false
 } = {}) {
+    if (isDebugging)
+        console.log(`blockSize: ${blockSize}, radius: ${radius}, offset: ${offset}, itemSize: ${itemSize}`)
     const donuutArray = []
     let currentRadius = 0
     const halfBlockSize = blockSize / 2
