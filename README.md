@@ -8,7 +8,7 @@ Need donut shaped position calculator? Use this!
 ## How to use
 
 ```
-import {makeDonuuut} from '../index.js'
+import {makeDonuuut} from 'donuuut'
 
 makeDonuut({
               blockSize: 32,
