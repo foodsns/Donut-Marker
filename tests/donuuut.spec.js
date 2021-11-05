@@ -217,6 +217,7 @@ test('block size > 0 block size < radius offset == 0 item len > 1', () => {
     expect(result[0].y).toBe(TESTCASES_LIST[24].offset.val);
     expect(result[2].x).toBe(38.54735723750887)
     expect(result[2].y).toBe(31.84495642961178)
+    console.log(result)
 });
 
 test('block size <= 0 radius <= 0 offset != 0 item len > 1', () => {
